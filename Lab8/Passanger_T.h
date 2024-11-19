@@ -97,8 +97,9 @@ public:
         cout << "Destination City: " << Destination << endl;
         cout << "Vehicle: " << Vehicle << endl;
         cout << "Transportation ID: " << Transportation_ID << endl;
-        cout << "Transportation time: " << Transportation_Time << "minutes." << endl;
-        cout << "Break time: " << Break_Time << "minutes." << endl;
+        cout << "Transportation time: " << Transportation_Time << " minutes." << endl;
+        cout << "Break time: " << Break_Time << " minutes." << endl;
+        cout << "Time Remained: " << Remain_Time() << " minutes." << endl;
         cout << "Seats Number: " << Seats_Number << endl;
         cout << "Tickets Available: " << Calculate_Tickets_Available() << endl;
         cout << "Tickets Sold: " << Tickets_Sold << endl;

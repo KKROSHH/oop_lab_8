@@ -25,5 +25,11 @@ class Transportation {
         Transportation_ID = 0;
     }
 
+    int Remain_Time()
+    {
+        int r_time = Transportation_Time - Break_Time;
+        return r_time;
+    }
+
 
 };

@@ -83,10 +83,11 @@ class Cargo_Transportation : protected Transportation
         cout << "Destination City: " << Destination << endl;
         cout << "Vehicle: " << Vehicle << endl;
         cout << "Transportation ID: " << Transportation_ID << endl;
-        cout << "Transportation time: " << Transportation_Time << "minutes." << endl;
-        cout << "Break time: " << Break_Time << "minutes." << endl;
+        cout << "Transportation time: " << Transportation_Time << " minutes." << endl;
+        cout << "Break time: " << Break_Time << " minutes." << endl;
+        cout << "Time Remained: " << Remain_Time() << " minutes." << endl;
         cout << "Cargo type: " << Cargo_Type << endl;
-        cout << "Cargo value: " << Cargo_Value << "hryvnyas" << endl;
-        cout << "Cargo weight: " << Cargo_Weight << "kilograms" << endl;
+        cout << "Cargo value: " << Cargo_Value << " hryvnyas" << endl;
+        cout << "Cargo weight: " << Cargo_Weight << " kilograms" << endl;
     }
 };

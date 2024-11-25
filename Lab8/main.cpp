@@ -12,6 +12,9 @@ int main(int argc, char const *argv[])
     Railway.Pass_Create();
     Railway.Pass_Print();
 
+    cout << "\n" << endl;
+
     Delivery.Cargo_Create();
+    cout << "\n" << endl;
     Delivery.Cargo_Print();
 }

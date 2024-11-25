@@ -31,50 +31,106 @@ class Cargo_Transportation : protected Transportation
     }
 
         // Метод для вводу даних з клавіатури
-    void Cargo_Create() {
-
-        for(;;)
+        void Cargo_Create() {
+        for (;;) 
         {
-        cout << "Enter the city of departure: ";
-        cin >> Departure;
 
-        cout << "Enter the city of destination: ";
-        cin >> Destination;
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-        cout << "Enter the vehicle: ";
-        cin >> Vehicle;
+        cout << "Enter the city of departure: " << endl;
+        getline(cin, Departure);
 
-        cout << "Enter the transportation ID: ";
+        if (Departure.empty()) {
+            cout << "Name of city can't be empty, try again" << endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
+
+        cout << "Enter the city of destination: " << endl;
+        getline(cin, Destination);
+
+        if (Destination.empty()) {
+            cout << "Name of city can't be empty, try again" << endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
+
+        cout << "Enter the vehicle: " << endl;
+        getline(cin, Vehicle);
+
+        if (Vehicle.empty()) {
+            cout << "Name of vehicle can't be empty, try again" << endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
+
+        cout << "Enter the transportation ID: " << endl;
         cin >> Transportation_ID;
 
-        cout << "Enter the transportation time: ";
+        if (cin.fail() || Transportation_ID <= 0) {
+            cout << "Transportation ID must be a positive integer. Please try again." << endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
+
+        cout << "Enter the transportation time in minutes: " << endl;
         cin >> Transportation_Time;
 
-        cout << "Enter the break time for transportation: ";
+        if (cin.fail() || Transportation_Time <= 0) {
+            cout << "Transportation time must be a positive integer. Please try again." << endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
+
+        cout << "Enter the break time for transportation in minutes: " << endl;
         cin >> Break_Time;
 
-        cout << "Enter the cargo value: ";
+        if (cin.fail() || Break_Time <= 0) {
+            cout << "Break time must be a positive integer. Please try again." << endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
+
+        cout << "Enter the cargo value: " << endl;
         cin >> Cargo_Value;
 
-        cout << "Enter the cargo type: ";
-        cin >> Cargo_Type;
+        if (cin.fail() || Cargo_Value < 0) {
+            cout << "Cargo value must be a non-negative integer. Please try again." << endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
 
-        cout << "Enter the weight of cargo: ";
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear buffer before next line input
+        cout << "Enter the cargo type: " << endl;
+        getline(cin, Cargo_Type);
+
+        if (Cargo_Type.empty()) {
+            cout << "Cargo type can't be empty, try again" << endl;
+            continue;
+        }
+
+        cout << "Enter the weight of cargo: " << endl;
         cin >> Cargo_Weight;
 
-        //Валідація даних
-         if (!cin.fail() &&
-            Cargo_Value >= 0 &&
-            Cargo_Weight > 0 &&
-            Transportation_ID > 0 &&
-            Transportation_Time > 0 &&
-            Break_Time > 0) 
-        {
-            cout << "New transportation created successfully!" << endl;
-            break;
-        } 
+        if (cin.fail() || Cargo_Weight <= 0) {
+            cout << "Cargo weight must be a positive integer. Please try again." << endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
         }
+
+        cout << "New transportation created successfully!" << endl;
+        break;
     }
+}
+
 
         // Метод для виведення інформації про перевезення
     void Cargo_Print() {

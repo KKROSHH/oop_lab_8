@@ -41,51 +41,107 @@ public:
     // Метод для вводу даних з клавіатури
    void Pass_Create() {
     for (;;) {
-        cout << "Enter the city of departure: ";
+
+        cout << "Enter the city of departure: " << endl;
         getline(cin, Departure);
 
-        cout << "Enter the city of destination: ";
+        if (Departure.empty())
+        {
+            cout << "Name of city can't be enpty, try again" << endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
+        
+        cout << "Enter the city of destination: " << endl;
         getline(cin, Destination);
 
-        cout << "Enter the vehicle: ";
+        if (Destination.empty())
+        {
+            cout << "Name of city can't be enpty, try again" << endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
+
+        cout << "Enter the vehicle: " << endl;
         getline(cin, Vehicle);
 
-        cout << "Enter the transportation ID: ";
+        if (Vehicle.empty())
+        {
+            cout << "Name of vehicle can't be enpty, try again" << endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
+
+        cout << "Enter the transportation ID: " << endl;
         cin >> Transportation_ID;
 
-        cout << "Enter the transportation time in minutes: ";
-        cin >> Transportation_Time;
+        if (cin.fail() || Transportation_ID <= 0)
+        {
+            cout << "Transportation ID must be a positive integer. Please try again." << endl;
+            continue;
+        }
 
-        cout << "Enter the break time for transportation in minutes: ";
+        cout << "Enter the transportation time in minutes: " << endl;
+        cin >> Transportation_Time;
+        
+        if (cin.fail() || Transportation_Time <= 0)
+        {
+            cout << "Transportation time must be a positive integer. Please try again." << endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
+
+        cout << "Enter the break time for transportation in minutes: " << endl;
         cin >> Break_Time;
 
-        cout << "Enter the amount of seats: ";
+        if (cin.fail() || Break_Time <= 0)
+        {
+            cout << "Break time must be a positive integer. Please try again." << endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
+
+        cout << "Enter the amount of seats: " << endl;
         cin >> Seats_Number;
 
-        cout << "Enter the amount of tickets: ";
+        if (cin.fail() || Seats_Number <= 0)
+        {
+            cout << "Amount of seats must be a positive integer. Please try again." << endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
+
+        cout << "Enter the amount of tickets: " << endl;
         cin >> Tickets_All;
 
-        cout << "Enter the amount of sold tickets: ";
+        if (cin.fail() || Tickets_All <= 0)
+        {
+            cout << "Amount of tickets must be a positive integer. Please try again." << endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
+
+        cout << "Enter the amount of sold tickets: " << endl;
         cin >> Tickets_Sold;
 
-        // Валідація даних
-        if (!cin.fail() &&
-            Tickets_Sold >= 0 &&
-            Seats_Number > 0 &&
-            Tickets_All > 0 &&
-            Transportation_ID > 0 &&
-            Transportation_Time > 0 &&
-            Break_Time > 0) 
+        if (cin.fail() || Tickets_Sold < 0)
         {
-            cout << "New transportation created successfully!" << endl;
-            break;
-        } 
-        else 
-        {
-            cout << "One of the fields has an incorrect value! Please try again." << endl;
-            cin.clear(); 
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            cout << "Amount of sold tickets must be a positive integer or zero. Please try again." << endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
         }
+
+          cout << "New transportation created successfully!" << endl;
+          break;
+        
     }
 }
 

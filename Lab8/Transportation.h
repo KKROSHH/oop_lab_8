@@ -15,6 +15,11 @@ class Transportation {
         std::string Departure; // Місто відправки
         std::string Destination; // Місто призначення
 
+    int Remain_Time()
+    {
+        int r_time = Transportation_Time - Break_Time;
+        return r_time;
+    }
 
     public:
     Transportation() { //Конструктор за замовчуванням
@@ -24,12 +29,9 @@ class Transportation {
         Break_Time = 0;
         Transportation_ID = 0;
     }
+    
+    
 
-    int Remain_Time()
-    {
-        int r_time = Transportation_Time - Break_Time;
-        return r_time;
-    }
 
 
 };
